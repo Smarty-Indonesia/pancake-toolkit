@@ -20,65 +20,71 @@ export const status = {
 
 export const links: MenuItemsType[] = [
   {
-    label: "Trade",
+    label: "Exchange",
     href: "/swap",
     icon: "Swap",
     items: [
-      {
-        label: "Exchange",
-        href: "https://exchange.pancakeswap.finance",
-      },
-      {
-        label: "Liquidity",
-        href: "https://exchange.pancakeswap.finance/#/pool",
-      },
-      {
-        label: "Charts",
-        href: "https://exchange.pancakeswap.finance/#/charts",
-        iconName: "Chart",
-        isMobileOnly: true,
-      },
+      // {
+      //   label: "Exchange",
+      //   href: "https://exchange.pancakeswap.finance",
+      // },
+      // {
+      //   label: "Liquidity",
+      //   href: "https://exchange.pancakeswap.finance/#/pool",
+      // },
     ],
   },
   {
-    label: "Earn",
-    href: "/",
+    label: "Liquidity",
+    href: "/swap",
+    icon: "Pools",
+    items: [],
+  },
+  {
+    label: "Farm",
+    href: "/farms",
     icon: "Earn",
     items: [
-      {
-        label: "Earn",
-        href: "/",
-      },
-      {
-        label: "Yield Farms",
-        href: "/",
-      },
-      {
-        label: "Syrup pools",
-        href: "/",
-      },
+      // {
+      //   label: "Earn",
+      //   href: "/",
+      // },
+      // {
+      //   label: "Yield Farms",
+      //   href: "/",
+      // },
+      // {
+      //   label: "Syrup pools",
+      //   href: "/",
+      // },
     ],
   },
   {
-    label: "Win",
-    href: "/",
-    icon: "Trophy",
-    items: [
-      {
-        label: "Win",
-        href: "/",
-      },
-      {
-        label: "Predictions",
-        href: "/",
-        status: status.LIVE,
-      },
-      {
-        label: "Lottery",
-        href: "/",
-      },
-    ],
+    label: "Referral",
+    href: "/referral",
+    icon: "Tickets",
+    items: [],
   },
+  // {
+  //   label: "Win",
+  //   href: "/",
+  //   icon: "Trophy",
+  //   items: [
+  //     {
+  //       label: "Win",
+  //       href: "/",
+  //     },
+  //     {
+  //       label: "Predictions",
+  //       href: "/",
+  //       status: status.LIVE,
+  //     },
+  //     {
+  //       label: "Lottery",
+  //       href: "/",
+  //     },
+  //   ],
+  // },
   {
     label: "",
     href: "/",
@@ -162,10 +168,8 @@ export const userMenulinks: DropdownMenuItems[] = [
   },
 ];
 
-export const MENU_HEIGHT = 56;
+export const MENU_HEIGHT = 92.5;
 export const MENU_ENTRY_HEIGHT = 48;
 export const MOBILE_MENU_HEIGHT = 44;
 export const SIDEBAR_WIDTH_FULL = 240;
 export const SIDEBAR_WIDTH_REDUCED = 56;
-export const TOP_BANNER_HEIGHT = 70;
-export const TOP_BANNER_HEIGHT_MOBILE = 84;

@@ -8,7 +8,7 @@ export const StyledMenuItemContainer = styled.div<StyledMenuItemProps>`
     $isActive &&
     $variant === "subMenu" &&
     `
-      &:after{
+      &:before{
         content: "";
         position: absolute;
         bottom: 0;

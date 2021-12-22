@@ -5,13 +5,8 @@ import { BoxProps } from "../Box";
 export interface DropdownMenuProps extends BoxProps {
   items?: DropdownMenuItems[];
   activeItem?: string;
-  /**
-   * As BottomNav styles
-   */
   isBottomNav?: boolean;
-  /**
-   * Show items on mobile when `isBottomNav` is true
-   */
+  openMenuTimeout?: number;
   showItemsOnMobile?: boolean;
   index?: number;
   setMenuOpenByIndex?: React.Dispatch<React.SetStateAction<Record<number, boolean>>>;
@@ -41,6 +36,4 @@ export interface DropdownMenuItems {
   type?: DropdownMenuItemType;
   status?: LinkStatus;
   disabled?: boolean;
-  iconName?: string;
-  isMobileOnly?: boolean;
 }

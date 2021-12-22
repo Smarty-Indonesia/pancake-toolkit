@@ -3,31 +3,32 @@ import { MenuItemsType } from "../MenuItems/types";
 
 const MenuItemsMock: MenuItemsType[] = [
   {
-    label: "Swap",
+    label: "Exchange",
     href: "/swap",
-    icon: "Swap",
-    items: ItemsMock,
-    showItemsOnMobile: false,
-  },
-  {
-    label: "Earn",
-    href: "/earn",
-    icon: "Earn",
+    icon: "Trade",
     items: ItemsMock,
     showItemsOnMobile: true,
   },
   {
-    label: "Gagnez des jetons",
-    href: "/win",
-    icon: "Trophy",
+    label: "Liquidity",
+    href: "/liquidity",
+    icon: "Pool",
     items: ItemsMock,
     showItemsOnMobile: true,
   },
   {
-    label: "NFT",
-    href: "/nft",
+    label: "Farms",
+    href: "/farms",
     icon: "Nft",
     items: ItemsMock,
+    showItemsOnMobile: true,
+  },
+    {
+    label: "Referral",
+    href: "/referral",
+    icon: "Ticket",
+    items: ItemsMock,
+    showItemsOnMobile: true,
   },
   {
     label: "More",

@@ -6,18 +6,18 @@ import Flex from "../../components/Box/Flex";
 import Button from "../../components/Button/Button";
 import IconButton from "../../components/Button/IconButton";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
-import { footerLinks } from "../../components/Footer/config";
 import Heading from "../../components/Heading/Heading";
 import Input from "../../components/Input/Input";
-import { CogIcon, LanguageCurrencyIcon } from "../../components/Svg";
+import { ChevronDownIcon, CogIcon, LanguageCurrencyIcon } from "../../components/Svg";
 import Text from "../../components/Text/Text";
 import { Modal, ModalProps, useModal } from "../Modal";
-import UserMenu from "./components/UserMenu";
+import { LabelText, StyledUserMenu } from "./components/UserMenu";
+import MenuIcon from "./components/UserMenu/MenuIcon";
 import { Variant, variants } from "./components/UserMenu/types";
 import { links, userMenulinks } from "./config";
+import { footerLinks } from "../../components/Footer/config";
 import Menu from "./Menu";
 import { Language, NavProps } from "./types";
-import BottomDrawer from "../../components/BottomDrawer/BottomDrawer";
 
 export default {
   title: "Widgets/Menu",
@@ -44,7 +44,11 @@ const UserMenuComponent: React.FC<{ variant?: Variant; text?: string; account?: 
   const accountEllipsis = account ? `${account.substring(0, 2)}...${account.substring(account.length - 4)}` : null;
   return (
     <DropdownMenu items={userMenulinks} py="12px">
-      <UserMenu account={text || accountEllipsis} avatarSrc="" variant={variant} />
+      <StyledUserMenu>
+        <MenuIcon avatarSrc="" variant={variant} />
+        <LabelText title={text || account}>{text || accountEllipsis}</LabelText>
+        <ChevronDownIcon color="text" width="24px" />
+      </StyledUserMenu>
     </DropdownMenu>
   );
 };
@@ -94,8 +98,6 @@ const defaultProps = {
 };
 
 const ConnectedTemplate: React.FC<NavProps> = (args) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <BrowserRouter>
       <Menu {...args}>
@@ -103,49 +105,6 @@ const ConnectedTemplate: React.FC<NavProps> = (args) => {
           <Heading as="h1" mb="8px">
             Page body
           </Heading>
-          <Button scale="sm" onClick={() => setIsOpen(true)}>
-            Show mobile drawer
-          </Button>
-          <BottomDrawer content={<Box p="16px">Example</Box>} isOpen={isOpen} setIsOpen={setIsOpen} />
-          <Text as="p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut
-          </Text>
-          <Text as="p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut
-          </Text>
-          <Text as="p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut
-          </Text>
           <Text as="p">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
@@ -166,19 +125,6 @@ const ConnectedTemplate: React.FC<NavProps> = (args) => {
 };
 export const Connected = ConnectedTemplate.bind({});
 Connected.args = defaultProps;
-
-export const ConnectedWithBanner = ConnectedTemplate.bind({});
-ConnectedWithBanner.args = {
-  ...defaultProps,
-  banner: (
-    <Flex height="100%" p="16px" alignItems="center" justifyContent="center" background="#7645D9">
-      <Text color="invertedContrast" mr="8px">
-        Banner example
-      </Text>
-      <Button scale="sm">I am button</Button>
-    </Flex>
-  ),
-};
 
 export const NotConnected: React.FC = () => {
   return (
